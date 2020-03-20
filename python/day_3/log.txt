@@ -1,0 +1,69 @@
+Vector(tail=(0, 0), head=(0, 0), current_steps=0)
+Vector(tail=(0, 0), head=(75, 0), current_steps=75)
+Vector(tail=(75, 0), head=(75, -30), current_steps=105)
+Vector(tail=(75, -30), head=(158, -30), current_steps=188)
+Vector(tail=(158, -30), head=(158, 53), current_steps=271)
+Vector(tail=(158, 53), head=(146, 53), current_steps=283)
+Vector(tail=(146, 53), head=(146, 4), current_steps=332)
+Vector(tail=(146, 4), head=(217, 4), current_steps=403)
+
+
+Vector(tail=(0, 0), head=(0, 0), current_steps=0)
+Vector(tail=(0, 0), head=(98, 0), current_steps=98)
+Vector(tail=(98, 0), head=(98, 47), current_steps=145)
+Vector(tail=(98, 47), head=(124, 47), current_steps=171)
+Vector(tail=(124, 47), head=(124, -16), current_steps=234)
+Vector(tail=(124, -16), head=(157, -16), current_steps=267)
+Vector(tail=(157, -16), head=(157, 71), current_steps=354)
+(157, 4)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Vector(tail=(0, 0), head=(0, 0), current_steps=0)
+Vector(tail=(0, 0), head=(75, 0), current_steps=75)
+Vector(tail=(75, 0), head=(75, -30), current_steps=105)
+Vector(tail=(75, -30), head=(158, -30), current_steps=188)
+Vector(tail=(158, -30), head=(158, 53), current_steps=271)
+Vector(tail=(158, 53), head=(146, 53), current_steps=283)
+Vector(tail=(146, 53), head=(146, 4), current_steps=332)
+Vector(tail=(146, 4), head=(217, 4), current_steps=403)
+Vector(tail=(217, 4), head=(217, 11), current_steps=410)
+Vector(tail=(217, 11), head=(145, 11), current_steps=482)
+
+
+Vector(tail=(0, 0), head=(0, 0), current_steps=0)
+Vector(tail=(0, 0), head=(98, 0), current_steps=98)
+Vector(tail=(98, 0), head=(98, 47), current_steps=145)
+Vector(tail=(98, 47), head=(124, 47), current_steps=171)
+Vector(tail=(124, 47), head=(124, -16), current_steps=234)
+Vector(tail=(124, -16), head=(157, -16), current_steps=267)
+Vector(tail=(157, -16), head=(157, 71), current_steps=354)
+(157, 11)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Vector(tail=(0, 0), head=(0, 0), current_steps=0)
+Vector(tail=(0, 0), head=(75, 0), current_steps=75)
+Vector(tail=(75, 0), head=(75, -30), current_steps=105)
+Vector(tail=(75, -30), head=(158, -30), current_steps=188)
+Vector(tail=(158, -30), head=(158, 53), current_steps=271)
+Vector(tail=(158, 53), head=(146, 53), current_steps=283)
+Vector(tail=(146, 53), head=(146, 4), current_steps=332)
+Vector(tail=(146, 4), head=(217, 4), current_steps=403)
+Vector(tail=(217, 4), head=(217, 11), current_steps=410)
+Vector(tail=(217, 11), head=(145, 11), current_steps=482)
+Vector(tail=(145, 11), head=(145, 73), current_steps=544)
+
+
+Vector(tail=(0, 0), head=(0, 0), current_steps=0)
+Vector(tail=(0, 0), head=(98, 0), current_steps=98)
+Vector(tail=(98, 0), head=(98, 47), current_steps=145)
+Vector(tail=(98, 47), head=(124, 47), current_steps=171)
+Vector(tail=(124, 47), head=(124, -16), current_steps=234)
+Vector(tail=(124, -16), head=(157, -16), current_steps=267)
+Vector(tail=(157, -16), head=(157, 71), current_steps=354)
+Vector(tail=(157, 71), head=(95, 71), current_steps=416)
+(145, 71)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
