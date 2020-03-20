@@ -51,7 +51,7 @@ def run_program(code: List[int]):
 # END run_program()
 
 
-def get_solution(code: List[int]) -> List[int]:
+def get_solution(code: List[int]) -> int:
     temp_code: List[int]
 
     for noun in range(0, 100):
@@ -66,7 +66,8 @@ def get_solution(code: List[int]) -> List[int]:
             # END IF
         # END INNER FOR
     # END FOR
-    return temp_code
+
+    return -1
 # END get_solution()
 
 
