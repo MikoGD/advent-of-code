@@ -22,7 +22,7 @@ class Tracker:
 
 
 def main():
-    wires: List[List[str]] = input_puller('example_input.txt')
+    wires: List[List[str]] = input_puller('input.txt')
     wire_1: List[Vector] = get_vectors(wires[0])
     wire_2: List[Vector] = get_vectors(wires[1])
 
@@ -35,29 +35,10 @@ def main():
 
     steps: List[int] = get_steps(intersections)
 
-    with open('log.txt', 'a+', encoding='utf-8') as file:
-        for tracker in intersections:
-            for vector in tracker.wire_1:
-                file.write(str(vector))
-                file.write('\n')
-            # END INNER FOR
-
-            file.write('\n\n')
-
-            for vector in tracker.wire_2:
-                file.write(str(vector))
-                file.write('\n')
-            # END INNER FOR
-
-            file.write(str(tracker.intersection))
-            file.write('\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n')
-        # END FOR
-
-    # END WITH
-    print(sorted(distances))
+    # print(sorted(distances))
     # print((sorted(distances))[0])
-    # print((sorted(steps))[0])
-    print(sorted(steps))
+    print((sorted(steps))[0])
+    # print(sorted(steps))
     # print(intersections)
 # END main()
 
@@ -181,8 +162,8 @@ def find_intersections(
             if check_intersect(horizontal, vertical) == True:
                 intersection = get_intersection(horizontal, vertical)
 
-                vector_index_1 = wire_1.index(vector_1) + 1
-                vector_index_2 = wire_2.index(vector_2) + 1
+                vector_index_1 = wire_1.index(vector_1)
+                vector_index_2 = wire_2.index(vector_2)
 
                 wire_1_path = wire_1[:vector_index_1]
                 wire_2_path = wire_2[:vector_index_2]
@@ -324,6 +305,8 @@ def calculate_steps(tracker: Tracker) -> int:
 
     wire_1_steps: int
     wire_2_steps: int
+    total_wire_1_steps: int
+    total_wire_2_steps: int
 
     if hx1 == hx2:
         '''vertical distance'''
@@ -334,18 +317,21 @@ def calculate_steps(tracker: Tracker) -> int:
         else:
             wire_1_steps = abs(hy1 - hy2)
         # END INNER IF
-    else:
+    elif hy1 == hy2:
         '''horizontal distance'''
         if hx1 < 0 or hx2 < 0:
             wire_1_steps = abs(hx1) + abs(hx2)
-        elif hy1 < 0 and hy2 < 0:
+        elif hx1 < 0 and hx2 < 0:
             wire_1_steps = abs(abs(hx1) + hx2)
         else:
             wire_1_steps = abs(hx1 - hx2)
         # END INNER IF
+    else:
+        print('error')
+        exit(0)
     # END IF
 
-    wire_1_steps += tracker.wire_1[-1].current_steps
+    total_wire_1_steps = wire_1_steps + tracker.wire_1[-1].current_steps
 
     if vx1 == vx2:
         '''vertical distance'''
@@ -356,20 +342,23 @@ def calculate_steps(tracker: Tracker) -> int:
         else:
             wire_2_steps = abs(vy1 - vy2)
         # END INNER IF
-    else:
+    elif vy1 == vy2:
         '''horizontal distance'''
         if vx1 < 0 or vx2 < 0:
             wire_2_steps = abs(vx1) + abs(vx2)
-        elif vy1 < 0 and vy2 < 0:
+        elif vx1 < 0 and vx2 < 0:
             wire_2_steps = abs(abs(vx1) + vx2)
         else:
             wire_2_steps = abs(vx1 - vx2)
         # END INNER IF
+    else:
+        print('error')
+        exit(0)
     # END IF
 
-    wire_2_steps += tracker.wire_2[-1].current_steps
+    total_wire_2_steps = wire_2_steps + tracker.wire_2[-1].current_steps
 
-    return wire_1_steps + wire_2_steps
+    return total_wire_1_steps + total_wire_2_steps
 # END calculate_steps()
 
 
