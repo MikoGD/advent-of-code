@@ -162,8 +162,8 @@ def find_intersections(
             if check_intersect(horizontal, vertical) == True:
                 intersection = get_intersection(horizontal, vertical)
 
-                vector_index_1 = wire_1.index(vector_1)
-                vector_index_2 = wire_2.index(vector_2)
+                vector_index_1 = wire_1.index(vector_1) + 1
+                vector_index_2 = wire_2.index(vector_2) + 1
 
                 wire_1_path = wire_1[:vector_index_1]
                 wire_2_path = wire_2[:vector_index_2]
@@ -293,20 +293,26 @@ def get_steps(intersections: List[Tracker]) -> List[int]:
 
 
 def calculate_steps(tracker: Tracker) -> int:
-    hx1: int = tracker.wire_1[-1].head[0]
+    hx1: int = tracker.wire_1[-1].tail[0]
     hx2: int = tracker.intersection[0]
-    hy1: int = tracker.wire_1[-1].head[1]
+    hy1: int = tracker.wire_1[-1].tail[1]
     hy2: int = tracker.intersection[1]
 
-    vx1: int = tracker.wire_2[-1].head[0]
+    vx1: int = tracker.wire_2[-1].tail[0]
     vx2: int = tracker.intersection[0]
-    vy1: int = tracker.wire_2[-1].head[1]
+    vy1: int = tracker.wire_2[-1].tail[1]
     vy2: int = tracker.intersection[1]
 
     wire_1_steps: int
     wire_2_steps: int
     total_wire_1_steps: int
     total_wire_2_steps: int
+
+    horizontal = find_horizontal(tracker.wire_1[-1], tracker.wire_2[-1])
+    vertical = find_vertical(tracker.wire_1[-1], tracker.wire_2[-1])
+
+    print(f'{horizontal}, {vertical}')
+    print(f'{check_intersect(horizontal, vertical)}')
 
     if hx1 == hx2:
         '''vertical distance'''
@@ -331,7 +337,7 @@ def calculate_steps(tracker: Tracker) -> int:
         exit(0)
     # END IF
 
-    total_wire_1_steps = wire_1_steps + tracker.wire_1[-1].current_steps
+    total_wire_1_steps = wire_1_steps + tracker.wire_1[-2].current_steps
 
     if vx1 == vx2:
         '''vertical distance'''
@@ -356,7 +362,7 @@ def calculate_steps(tracker: Tracker) -> int:
         exit(0)
     # END IF
 
-    total_wire_2_steps = wire_2_steps + tracker.wire_2[-1].current_steps
+    total_wire_2_steps = wire_2_steps + tracker.wire_2[-2].current_steps
 
     return total_wire_1_steps + total_wire_2_steps
 # END calculate_steps()

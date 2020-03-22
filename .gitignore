@@ -1,0 +1,13 @@
+node_modules
+
+*.workspace
+
+.prettierrc
+
+*.exe
+
+.pytest_cache
+
+__pycache__
+
+.vscode
