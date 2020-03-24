@@ -35,9 +35,12 @@ def main():
 
     steps: List[int] = get_steps(intersections)
 
+    for intersection in intersection_points:
+      print(f'intersection: ${intersection[0]}, ${intersection[1]}');
+
     # print(sorted(distances))
     # print((sorted(distances))[0])
-    print((sorted(steps))[0])
+    # print((sorted(steps))[0])
     # print(sorted(steps))
     # print(intersections)
 # END main()
