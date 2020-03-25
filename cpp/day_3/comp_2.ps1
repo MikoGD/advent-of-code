@@ -1,1 +1,1 @@
-g++ -Wall problem_2.cpp -o problem_2
+g++ -Wall -g problem_2.cpp -o problem_2
