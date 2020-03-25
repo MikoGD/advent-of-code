@@ -45,6 +45,7 @@ TRACKERS get_trackers(LINES, LINES);
 Tracker create_tracker(LINES, LINES, Line, Line, int, int);
 bool check_intersection(Line, Line);
 vector<int> get_manhanttain_distances(TRACKERS);
+vector<int> get_steps(TRACKERS);
 
 void copy_lines(LINES, LINES);
 void copy_array(int[], int[]);
@@ -57,14 +58,15 @@ int main()
   wires.lines_2 = get_lines(wires.wire_2);
 
   TRACKERS trackers = get_trackers(wires.lines_1, wires.lines_2);
-  /*
+
   for (Tracker tracker : trackers)
   {
+    cout << tracker.wire_1[0].tail[0] << endl;
     cout << "intersection: " << tracker.intersection[0] << ", " << tracker.intersection[1] << endl;
   }
-  */
 
   vector<int> distances = get_manhanttain_distances(trackers);
+  vector<int> steps = get_steps(trackers);
 
   cout << *min_element(distances.begin(), distances.end()) << endl;
 
@@ -374,6 +376,35 @@ vector<int> get_manhanttain_distances(TRACKERS trackers)
   }
 
   return distances;
+}
+
+vector<int> get_steps(TRACKERS trackers)
+{
+  vector<int> steps;
+
+  for (Tracker tracker : trackers)
+  {
+    cout << "checking intersection" << endl;
+    Line line_1 = tracker.wire_1.back();
+    Line line_2 = tracker.wire_2.back();
+
+    bool result = check_intersection(line_1, line_2) ? "true" : "false";
+    cout << "checked intersection" << endl;
+
+    cout << "wire 1 tail: " << (tracker.wire_1.back()).tail[0] << ", ";
+    cout << tracker.wire_1.back().tail[1];
+    cout << " head: " << tracker.wire_1.back().head[0] << ", ";
+    cout << tracker.wire_1.back().head[1] << endl;
+
+    cout << "wire 2 tail: " << tracker.wire_2.back().tail[0] << ", ";
+    cout << tracker.wire_2.back().tail[1];
+    cout << " head: " << tracker.wire_2.back().head[0] << ", ";
+    cout << tracker.wire_2.back().head[1] << endl;
+    cout << result << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+  }
+
+  return steps;
 }
 
 void copy_lines(LINES source, LINES dest)
