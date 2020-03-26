@@ -1,1 +1,1 @@
-g++ -Wall -g problem_1.cpp -o problem_1
+g++ -Wall -g -I../boost_1_72_0/ problem_1.cpp -o problem_1

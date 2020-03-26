@@ -1,14 +1,15 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <vector>
 #include <cstdlib>
 #include <algorithm>
+#include <iterator>
 
 using namespace std;
 
 vector<int> input_puller(string);
-vector<string> split_string(string, char);
-vector<int> convert_to_int(vector<string>);
+void split_string(const string &, vector<string> &);
 void run_program(vector<int> &);
 
 int main()
@@ -18,13 +19,8 @@ int main()
 
   codes = input_puller("input_2.txt");
 
-  for (int code : codes)
-  {
-    cout << code;
-  }
-
   return 0;
-} // END main()
+}
 
 vector<int> input_puller(string file_name)
 {
@@ -33,54 +29,37 @@ vector<int> input_puller(string file_name)
   vector<string> codes;
   vector<int> int_codes;
 
-  file.open("input.txt");
+  file.open(file_name);
 
   file >> raw_codes;
 
   file.close();
 
-  codes = split_string(raw_codes, ',');
+  split_string(raw_codes, codes);
 
   for (string code : codes)
   {
     cout << code << endl;
   }
 
-  cout << "before transform" << endl;
   transform(codes.begin(), codes.end(), back_inserter(int_codes),
             [](string s) -> int { return stoi(s); });
-  cout << "after transform" << endl;
-
-  for (int code : int_codes)
-  {
-    cout << code << endl;
-  }
 
   return int_codes;
-} // END input_puller()
+}
 
-vector<string> split_string(string raw_string, char delimiter)
+void split_string(const string &str, vector<string> &cont)
 {
-  vector<char> elem;
-  vector<string> split_string;
+  stringstream ss(str);
+  string token;
 
-  for (size_t i = 0; i < raw_string.length(); i++)
+  while (getline(ss, token, ','))
   {
-    if (raw_string[i] != delimiter)
-    {
-      elem.push_back(raw_string[i]);
-    }
-    else
-    {
-      string temp(elem.begin(), elem.end());
-      split_string.push_back(temp);
-      elem.clear();
-    } // END IF
-  }   // END FOR
+    cont.push_back(token);
+  }
+}
 
-  return split_string;
-} // END split_string()
-  /*
+/*
 void run_program(vector<int> &codes)
 {
   int opcode, param_1, param_2, pos, instruction_pointer;
